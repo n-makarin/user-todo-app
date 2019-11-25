@@ -21,8 +21,9 @@ export default Vue.extend({
   computed: {
   },
   async asyncData (context) {
-    await context.store.dispatch('user/setList', { pageNumber: context.route.query.page })
-    const userList: Types.UserList = context.store.getters['user/list']
+    await context.store.dispatch('user/list/set', { pageNumber: context.route.query.page })
+
+    const userList: Types.UserList = context.store.getters['user/list/data']
     return {
       userList
     }

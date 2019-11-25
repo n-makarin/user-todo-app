@@ -1,27 +1,31 @@
 import * as Types from '~/types/index'
 
 export const state = () => ({
-  list: [],
-  listLimit: 5
+  data: [],
+  limit: 5,
+  totalCount: 0
 })
 
 export const mutations = {
   SET_USER_LIST (state: any, data: Types.UserList) {
-    state.list = data
+    state.data = data
+  },
+  SET_TOTAL_COUNT (state: any, count: number) {
+    state.totalCount = count
   }
 }
 
 export const actions = {
   /**
-   * Get raw user list by params: 'pageNumber' and 'listLimit'
+   * Get raw user list by params: 'pageNumber' and 'limit'
    */
-  async getRawList ({ getters }: any, pageNumber: number ): Promise<object[]> {
-    const listLimit: number = getters.listLimit
+  async getRawList ({ getters, commit }: any, pageNumber: number ): Promise<object[]> {
+    const limit: number = getters.limit
     let response: any
     // @ts-ignore (ts can't see $sendRequest plugin)
     await this.app.$sendRequest({
       method: 'GET',
-      url: `users?_page=${pageNumber}&_limit=${listLimit}`
+      url: `users?_page=${pageNumber}&_limit=${limit}`
     })
       .catch((err: any) => {
         console.log(err)
@@ -29,13 +33,14 @@ export const actions = {
       .then((resp: any) => {
         if (!resp || !resp.data) { return null }
         response = resp.data
+        commit('SET_TOTAL_COUNT', resp.headers['x-total-count'])
       })
       return response
   },
   /**
    * Handle rawList to set userList to store
    */
-  async setList (
+  async set (
       { commit, dispatch }: any, { pageNumber = 0 }: { pageNumber?: number; } = {}
       ): Promise<void> {
         const rawList: any = await dispatch('getRawList', pageNumber)
@@ -53,10 +58,13 @@ export const actions = {
 }
 
 export const getters = {
-  list(state: any) {
-    return state.list
+  data(state: any) {
+    return state.data
   }, 
-  listLimit(state: any) {
-    return state.listLimit
+  limit(state: any) {
+    return state.limit
+  },
+  totalCount(state: any) {
+    return state.totalCount
   } 
 }

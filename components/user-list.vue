@@ -54,6 +54,7 @@ export default Vue.extend({
 .user-list {
   text-align: left;
   &-item {
+    cursor: pointer;
     &__name {
       font-weight: normal;
     }
