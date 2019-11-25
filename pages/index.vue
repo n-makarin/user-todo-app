@@ -1,16 +1,18 @@
 <template>
   <div class="index">
     <h1>Users</h1>
-    {{ userList }}
+    <user-list :data="userList" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import * as Types from '~/types/index'
+import UserList from '~/components/user-list.vue'
 
 export default Vue.extend({
   components: {
+    UserList
   },
   data () {
     return {
