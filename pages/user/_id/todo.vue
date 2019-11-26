@@ -1,6 +1,7 @@
 <template>
   <div class="index">
     todo
+    <a href="javascript:void(0);" @click.prevent="$router.go(-1)">back</a>
   </div>
 </template>
 
