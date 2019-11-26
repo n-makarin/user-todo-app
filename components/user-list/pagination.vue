@@ -103,7 +103,6 @@ export default Vue.extend({
       background: rgba(66,185,131,0.77255);
       color: white;
       font-weight: 500;
-
       &.link_active {
         opacity: .4;
       }

@@ -23,19 +23,12 @@ export default Vue.extend({
       type: Array,
       default: () => []
     }
-  },
-  data () {
-    return {
-    }
-  },
-  computed: {
   }
 })
 </script>
 
 <style lang="scss" scoped>
 .todo-list {
-
   &__item {
     margin: 10px 0;
   }

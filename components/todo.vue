@@ -26,10 +26,6 @@ export default Vue.extend({
       default: false
     }
   },
-  data () {
-    return {
-    }
-  },
   computed: {
     checked: {
       get (): any {
@@ -48,7 +44,6 @@ export default Vue.extend({
   position: relative;
   display: flex;
   flex-wrap: wrap;
-
   &__title {
     &:first-letter {
       text-transform: uppercase;

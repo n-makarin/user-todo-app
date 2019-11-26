@@ -15,10 +15,6 @@ export default Vue.extend({
   components: {
     TodoList
   },
-  data () {
-    return {
-    }
-  },
   computed: {
     userId (): string {
       return this.$route.params.id
