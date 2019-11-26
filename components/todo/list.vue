@@ -5,6 +5,7 @@
       :key="todo.id"
       :title="todo.title"
       :completed="todo.completed"
+      class="todo-list__item"
     />
   </div>
 </template>
@@ -33,4 +34,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.todo-list {
+
+  &__item {
+    margin: 10px 0;
+  }
+}
 </style>
