@@ -6,6 +6,7 @@
       :total-count="userTotalCount"
       :list-limit="userListLimit"
       :page-number="pageNumber"
+      class="index__pagination"
     />
   </div>
 </template>
@@ -59,4 +60,9 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.index {
+  &__pagination {
+    margin-top: 30px;
+  }
+}
 </style>

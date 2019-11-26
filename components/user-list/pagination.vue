@@ -3,8 +3,9 @@
     <div
       v-for="link in linkList"
       :key="link.id"
+      class="pagination__link"
     >
-      <nuxt-link :to="link.path">
+      <nuxt-link :to="link.path" :class="{ 'link_active': link.active }">
         {{ link.title }}
       </nuxt-link>
     </div>
@@ -32,11 +33,6 @@ export default Vue.extend({
       default: () => 1
     }
   },
-  data () {
-    return {
-
-    }
-  },
   computed: {
     linkList () {
       const pageQuery: string = '/?page='
@@ -46,26 +42,31 @@ export default Vue.extend({
         next: this.getNextPageNumber(),
         last: this.getLastPageNumber()
       }
+      const currentPageNumber: number = this.pageNumber
       return [
         {
           id: 'first',
           title: 'first',
-          path: pageQuery + pageNumber.first
+          path: pageQuery + pageNumber.first,
+          active: pageNumber.first === currentPageNumber
         },
         {
           id: 'prev',
           title: 'prev',
-          path: pageQuery + pageNumber.prev
+          path: pageQuery + pageNumber.prev,
+          active: pageNumber.prev === currentPageNumber
         },
         {
           id: 'next',
           title: 'next',
-          path: pageQuery + pageNumber.next
+          path: pageQuery + pageNumber.next,
+          active: pageNumber.next === currentPageNumber
         },
         {
           id: 'last',
           title: 'last',
-          path: pageQuery + pageNumber.last
+          path: pageQuery + pageNumber.last,
+          active: pageNumber.last === currentPageNumber
         }
       ]
     }
@@ -87,4 +88,26 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.pagination {
+  display: flex;
+  &__link {
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+    a {
+      display: block;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 3px;
+      background: rgba(66,185,131,0.77255);
+      color: white;
+      font-weight: 500;
+
+      &.link_active {
+        opacity: .4;
+      }
+    }
+  }
+}
 </style>
