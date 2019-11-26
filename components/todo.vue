@@ -3,7 +3,7 @@
     <div class="todo-title">
       {{ title }}
     </div>
-    <input id="checkbox" v-model="completed" type="checkbox">
+    <input id="checkbox" :value="completed" type="checkbox">
   </div>
 </template>
 
