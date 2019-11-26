@@ -19,8 +19,8 @@ export default Vue.extend({
   },
   props: {
     data: {
-      type: Object,
-      default: () => {}
+      type: Array,
+      default: () => []
     }
   },
   data () {

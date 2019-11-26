@@ -30,7 +30,7 @@ export default Vue.extend({
     await context.store.dispatch('todo/list/get', userId)
 
     const user: any = context.store.getters['user/data']
-    const todoList: Types.TodoList = context.store.getters['user/data']
+    const todoList: Types.TodoList = context.store.getters['todo/list/data']
     return {
       user,
       todoList
