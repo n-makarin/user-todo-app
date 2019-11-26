@@ -3,7 +3,7 @@
     <div class="todo-title">
       {{ title }}
     </div>
-    <input id="checkbox" :value="completed" type="checkbox">
+    <input id="checkbox" v-model="checked" type="checkbox">
   </div>
 </template>
 
@@ -28,6 +28,14 @@ export default Vue.extend({
     }
   },
   computed: {
+    checked: {
+      get (): any {
+        return this.completed
+      },
+      set (): any {
+        // send request to set todo value
+      }
+    }
   }
 })
 </script>
