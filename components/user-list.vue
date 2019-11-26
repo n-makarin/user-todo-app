@@ -30,7 +30,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import * as Types from '~/types/index'
 
 export default Vue.extend({
   components: {
@@ -51,11 +50,40 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+$green: #42b983c5;
+$light-green: #1087751c;
 .user-list {
+  width: 100%;
   text-align: left;
+
+  table {
+    border-collapse: collapse;
+  }
+
+  thead th {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    background: $green;
+  }
+  tr:nth-child(even) {background-color: #f2f2f2;}
+
+  th, td {
+    height: 30px;
+    padding: 0 10px;
+  }
+
+  tbody tr {
+    transition: background .2s;
+
+    &:hover {
+      background: $light-green;
+    }
+  }
   &-item {
     cursor: pointer;
     &__name {
+      width: 33.3%;
       font-weight: normal;
     }
   }
