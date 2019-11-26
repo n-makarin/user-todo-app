@@ -1,6 +1,6 @@
 <template>
-  <div class="index">
-    <a href="javascript:void(0);" @click.prevent="$router.go(-1)">back</a>
+  <div class="todo">
+    <a class="todo__back" href="javascript:void(0);" @click.prevent="$router.go(-1)">back</a>
     <h1>{{ user.name }}</h1>
     <todo-list :data="todoList" />
   </div>
@@ -40,4 +40,16 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.todo {
+  padding: 20px 0;
+  &__back {
+    display: inline-block;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background: rgba(66,185,131,0.77255);
+    color: white;
+    font-weight: 500;
+  }
+}
 </style>
