@@ -11,6 +11,7 @@ import * as Types from '~/types/index'
 import UserList from '~/components/user-list.vue'
 
 export default Vue.extend({
+  middleware: 'userList',
   components: {
     UserList
   },
