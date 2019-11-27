@@ -1,7 +1,7 @@
 {
   "name": "user-todo",
   "version": "1.0.0",
-  "description": "Test task for phygitalism.com company",
+  "description": "Test task",
   "author": "Nikita Makarin",
   "private": true,
   "scripts": {
